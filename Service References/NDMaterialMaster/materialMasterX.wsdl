@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:intf="http://localhost:8082/upcsw/materialMasterX" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://localhost:8082/upcsw/materialMasterX" targetNamespace="http://localhost:8082/upcsw/materialMasterX" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://localhost:8082/upcsw/materialMasterX">
+      <xsd:element name="createItemX">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="login" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+            <xsd:element name="partnerCode" type="xsd:string" />
+            <xsd:element name="messageType" type="xsd:string" />
+            <xsd:element name="characterEncoding" type="xsd:string" />
+            <xsd:element name="item" type="xsd:string" />
+            <xsd:element name="description" type="xsd:string" />
+            <xsd:element name="supplier" type="xsd:string" />
+            <xsd:element name="supplierName" type="xsd:string" />
+            <xsd:element name="serialNumberManagement" type="xsd:string" />
+            <xsd:element name="component" type="xsd:string" />
+            <xsd:element name="qtyBox" type="xsd:string" />
+            <xsd:element name="qtyPallet" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createItemXResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="createItemXReturn" type="impl:UPIE01AdeliaPrcnam00000CREATEITEM00Result" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="UPIE01AdeliaPrcnam00000CREATEITEM00Result">
+        <xsd:sequence>
+          <xsd:element name="returnCode2" nillable="true" type="xsd:string" />
+          <xsd:element name="returnDescription" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="createItemXRequest">
+    <wsdl:part name="parameters" element="impl:createItemX" />
+  </wsdl:message>
+  <wsdl:message name="createItemXResponse">
+    <wsdl:part name="parameters" element="impl:createItemXResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PortTypematerialMasterX">
+    <wsdl:operation name="createItemX">
+      <wsdl:input name="createItemXRequest" message="impl:createItemXRequest" />
+      <wsdl:output name="createItemXResponse" message="impl:createItemXResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="materialMasterXSoapBinding" type="impl:PortTypematerialMasterX">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="createItemX">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="createItemXRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createItemXResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="materialMasterX">
+    <wsdl:port name="materialMasterX" binding="impl:materialMasterXSoapBinding">
+      <wsdlsoap:address location="http://83.206.128.120:8082/upcsw/services/materialMasterX" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

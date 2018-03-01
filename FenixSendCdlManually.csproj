@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{990C8568-71B0-4392-B9E4-4A34DB8A5808}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FenixSendCdlManually</RootNamespace>
+    <AssemblyName>FenixSendCdlManually</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UpcExtensions">
+      <HintPath>..\..\DOTNET40\LIB\DLL\UpcExtensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BC.cs" />
+    <Compile Include="cdlItems.cs">
+      <DependentUpon>FenixCdlsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cdlItemTypes.cs">
+      <DependentUpon>FenixCdlsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cdlKits.cs">
+      <DependentUpon>FenixCdlsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cdlKitsItems.cs">
+      <DependentUpon>FenixCdlsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cdlMeasures.cs">
+      <DependentUpon>FenixCdlsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeListItem.cs" />
+    <Compile Include="FenixCdlsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FenixCdlsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FenixCdlsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FenixCdlsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FenixCdlsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FenixCdlsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectCreator.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="R0Test.cs" />
+    <Compile Include="Service References\NDInterfacesNEW\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\NDMaterialMaster\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\NDNDLInterfaces\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SetSent\CdlItemsSetSent.cs" />
+    <Compile Include="SetSent\CdlKitsSetSent.cs" />
+    <Compile Include="SetSent\ISetSent.cs" />
+    <Compile Include="XMLMessageCreator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="FenixCdlsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FenixCdlsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="FenixCdlsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FenixCdlsModel.edmx</DependentUpon>
+      <LastGenOutput>FenixCdlsModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="FenixCdlsModel.edmx.diagram">
+      <DependentUpon>FenixCdlsModel.edmx</DependentUpon>
+    </None>
+    <None Include="FenixCdlsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FenixCdlsModel.edmx</DependentUpon>
+      <LastGenOutput>FenixCdlsModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Service References\NDInterfacesNEW\FenixSendCdlManually.NDInterfacesNEW.UPWSI0Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\NDInterfacesNEW\NDL_Interfaces.wsdl" />
+    <None Include="Service References\NDMaterialMaster\FenixSendCdlManually.NDMaterialMaster.createItemXResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\NDMaterialMaster\FenixSendCdlManually.NDMaterialMaster.UPIE01AdeliaPrcnam00000CREATEITEM00Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\NDMaterialMaster\materialMasterX.wsdl" />
+    <None Include="Service References\NDNDLInterfaces\FenixSendCdlManually.NDNDLInterfaces.UPWSI0Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\NDNDLInterfaces\NDL_Interfaces.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\NDInterfacesNEW\" />
+    <WCFMetadataStorage Include="Service References\NDMaterialMaster\" />
+    <WCFMetadataStorage Include="Service References\NDNDLInterfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\NDNDLInterfaces\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\NDNDLInterfaces\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\NDNDLInterfaces\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\NDMaterialMaster\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\NDMaterialMaster\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\NDMaterialMaster\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\NDInterfacesNEW\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\NDInterfacesNEW\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\NDInterfacesNEW\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Info.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FenixHelper\FenixHelper.csproj">
+      <Project>{7685fa4c-d022-4cc0-b5f3-6d4354ef8c9c}</Project>
+      <Name>FenixHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

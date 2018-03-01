@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FenixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cdlItems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupGoods" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DescriptionCz" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DescriptionEng" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MeasuresId" Type="int" Nullable="false" />
+          <Property Name="ItemTypesId" Type="int" Nullable="false" />
+          <Property Name="PackagingId" Type="int" />
+          <Property Name="GroupsId" Type="int" />
+          <Property Name="ItemType" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="PC" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Packaging" Type="nchar" MaxLength="10" />
+          <Property Name="IsSent" Type="bit" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" />
+          <Property Name="ItemTypeDesc1" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="ItemTypeDesc2" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cdlItemTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DescriptionCz" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DescriptionEng" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsSent" Type="int" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cdlKits">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="5" />
+          <Property Name="DescriptionCz" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DescriptionEng" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MeasuresId" Type="int" Nullable="false" />
+          <Property Name="MeasuresCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="KitQualitiesId" Type="int" />
+          <Property Name="KitQualitiesCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsSent" Type="bit" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" />
+          <Property Name="GroupsId" Type="int" />
+          <Property Name="Packaging" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cdlKitsItems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cdlKitsId" Type="int" Nullable="false" />
+          <Property Name="ItemVerKit" Type="bit" Nullable="false" />
+          <Property Name="ItemOrKitId" Type="int" Nullable="false" />
+          <Property Name="ItemGroupGoods" Type="nvarchar" MaxLength="3" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemOrKitQuantity" Type="numeric" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="PackageType" Type="nchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserId" Type="int" Nullable="false" />
+          <Property Name="IsSent" Type="bit" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="cdlMeasures">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DescriptionCz" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DescriptionEng" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsSent" Type="bit" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_cdlKitsItems_cdlKits">
+          <End Role="cdlKits" Type="Self.cdlKits" Multiplicity="1" />
+          <End Role="cdlKitsItems" Type="Self.cdlKitsItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cdlKits">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="cdlKitsItems">
+              <PropertyRef Name="cdlKitsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="prCdlItemsSetSent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ItemID" Type="int" Mode="In" />
+          <Parameter Name="ReturnValue" Type="int" Mode="InOut" />
+          <Parameter Name="ReturnMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="prCdlKitsSetSent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ItemID" Type="int" Mode="In" />
+          <Parameter Name="ReturnValue" Type="int" Mode="InOut" />
+          <Parameter Name="ReturnMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="prGetIntValueFromCounter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CounterName" Type="varchar" Mode="In" />
+          <Parameter Name="NewValue" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="FenixModelStoreContainer">
+          <EntitySet Name="cdlItems" EntityType="Self.cdlItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cdlItemTypes" EntityType="Self.cdlItemTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cdlKits" EntityType="Self.cdlKits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cdlKitsItems" EntityType="Self.cdlKitsItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cdlMeasures" EntityType="Self.cdlMeasures" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_cdlKitsItems_cdlKits" Association="Self.FK_cdlKitsItems_cdlKits">
+            <End Role="cdlKits" EntitySet="cdlKits" />
+            <End Role="cdlKitsItems" EntitySet="cdlKitsItems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FenixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cdlItems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupGoods" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescriptionCz" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DescriptionEng" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MeasuresId" Type="Int32" Nullable="false" />
+          <Property Name="ItemTypesId" Type="Int32" Nullable="false" />
+          <Property Name="PackagingId" Type="Int32" />
+          <Property Name="ItemType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PC" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Packaging" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="IsSent" Type="Boolean" Nullable="false" />
+          <Property Name="SentDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserId" Type="Int32" Nullable="false" />
+          <Property Name="GroupsId" Type="Int32" />
+          <Property Name="ItemTypeDesc1" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="ItemTypeDesc2" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="cdlMeasures">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescriptionCz" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DescriptionEng" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsSent" Type="Boolean" Nullable="false" />
+          <Property Name="SentDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="FenixCdlsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cdlItems" EntityType="Self.cdlItems" />
+          <EntitySet Name="cdlMeasures" EntityType="Self.cdlMeasures" />
+          <EntitySet Name="cdlKits" EntityType="FenixModel.cdlKits" />
+          <EntitySet Name="cdlKitsItems" EntityType="FenixModel.cdlKitsItems" />
+          <AssociationSet Name="FK_cdlKitsItems_cdlKits" Association="FenixModel.FK_cdlKitsItems_cdlKits">
+            <End Role="cdlKits" EntitySet="cdlKits" />
+            <End Role="cdlKitsItems" EntitySet="cdlKitsItems" />
+          </AssociationSet>
+          <FunctionImport Name="prCdlItemsSetSent">
+            <Parameter Name="ItemID" Mode="In" Type="Int32" />
+            <Parameter Name="ReturnValue" Mode="InOut" Type="Int32" />
+            <Parameter Name="ReturnMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="prCdlKitsSetSent">
+            <Parameter Name="ItemID" Mode="In" Type="Int32" />
+            <Parameter Name="ReturnValue" Mode="InOut" Type="Int32" />
+            <Parameter Name="ReturnMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="cdlItemTypes" EntityType="FenixModel.cdlItemTypes" />
+          <FunctionImport Name="prGetIntValueFromCounter">
+            <Parameter Name="CounterName" Mode="In" Type="String" />
+            <Parameter Name="NewValue" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="cdlKits">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionCz" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEng" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MeasuresId" Type="Int32" Nullable="false" />
+          <Property Name="MeasuresCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KitQualitiesId" Type="Int32" />
+          <Property Name="KitQualitiesCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsSent" Type="Boolean" Nullable="false" />
+          <Property Name="SentDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cdlKitsItems" Relationship="FenixModel.FK_cdlKitsItems_cdlKits" FromRole="cdlKits" ToRole="cdlKitsItems" />
+          <Property Name="GroupsId" Type="Int32" />
+          <Property Name="Packaging" Type="Int32" />
+        </EntityType>
+        <EntityType Name="cdlKitsItems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cdlKitsId" Type="Int32" Nullable="false" />
+          <Property Name="ItemVerKit" Type="Boolean" Nullable="false" />
+          <Property Name="ItemOrKitId" Type="Int32" Nullable="false" />
+          <Property Name="ItemGroupGoods" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemOrKitQuantity" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+          <Property Name="PackageType" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsSent" Type="Boolean" Nullable="false" />
+          <Property Name="SentDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="cdlKits" Relationship="FenixModel.FK_cdlKitsItems_cdlKits" FromRole="cdlKitsItems" ToRole="cdlKits" />
+        </EntityType>
+        <Association Name="FK_cdlKitsItems_cdlKits">
+          <End Type="FenixModel.cdlKits" Role="cdlKits" Multiplicity="1" />
+          <End Type="FenixModel.cdlKitsItems" Role="cdlKitsItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cdlKits">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="cdlKitsItems">
+              <PropertyRef Name="cdlKitsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="cdlItemTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DescriptionCz" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEng" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsSent" Type="Int32" Nullable="false" />
+          <Property Name="SentDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyUserId" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FenixModelStoreContainer" CdmEntityContainer="FenixCdlsEntities">
+          <EntitySetMapping Name="cdlItems">
+            <EntityTypeMapping TypeName="FenixModel.cdlItems">
+              <MappingFragment StoreEntitySet="cdlItems">
+                <ScalarProperty Name="ItemTypeDesc2" ColumnName="ItemTypeDesc2" />
+                <ScalarProperty Name="ItemTypeDesc1" ColumnName="ItemTypeDesc1" />
+                <ScalarProperty Name="GroupsId" ColumnName="GroupsId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GroupGoods" ColumnName="GroupGoods" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DescriptionCz" ColumnName="DescriptionCz" />
+                <ScalarProperty Name="DescriptionEng" ColumnName="DescriptionEng" />
+                <ScalarProperty Name="MeasuresId" ColumnName="MeasuresId" />
+                <ScalarProperty Name="ItemTypesId" ColumnName="ItemTypesId" />
+                <ScalarProperty Name="PackagingId" ColumnName="PackagingId" />
+                <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+                <ScalarProperty Name="PC" ColumnName="PC" />
+                <ScalarProperty Name="Packaging" ColumnName="Packaging" />
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserId" ColumnName="ModifyUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cdlMeasures">
+            <EntityTypeMapping TypeName="FenixModel.cdlMeasures">
+              <MappingFragment StoreEntitySet="cdlMeasures">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DescriptionCz" ColumnName="DescriptionCz" />
+                <ScalarProperty Name="DescriptionEng" ColumnName="DescriptionEng" />
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUserId" ColumnName="ModifyUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cdlKits">
+            <EntityTypeMapping TypeName="FenixModel.cdlKits">
+              <MappingFragment StoreEntitySet="cdlKits">
+                <ScalarProperty Name="Packaging" ColumnName="Packaging" />
+                <ScalarProperty Name="GroupsId" ColumnName="GroupsId" />
+                <ScalarProperty Name="ModifyUserId" ColumnName="ModifyUserId" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+                <ScalarProperty Name="KitQualitiesCode" ColumnName="KitQualitiesCode" />
+                <ScalarProperty Name="KitQualitiesId" ColumnName="KitQualitiesId" />
+                <ScalarProperty Name="MeasuresCode" ColumnName="MeasuresCode" />
+                <ScalarProperty Name="MeasuresId" ColumnName="MeasuresId" />
+                <ScalarProperty Name="DescriptionEng" ColumnName="DescriptionEng" />
+                <ScalarProperty Name="DescriptionCz" ColumnName="DescriptionCz" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cdlKitsItems">
+            <EntityTypeMapping TypeName="FenixModel.cdlKitsItems">
+              <MappingFragment StoreEntitySet="cdlKitsItems">
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+                <ScalarProperty Name="ModifyUserId" ColumnName="ModifyUserId" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PackageType" ColumnName="PackageType" />
+                <ScalarProperty Name="ItemOrKitQuantity" ColumnName="ItemOrKitQuantity" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemGroupGoods" ColumnName="ItemGroupGoods" />
+                <ScalarProperty Name="ItemOrKitId" ColumnName="ItemOrKitId" />
+                <ScalarProperty Name="ItemVerKit" ColumnName="ItemVerKit" />
+                <ScalarProperty Name="cdlKitsId" ColumnName="cdlKitsId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="prCdlItemsSetSent" FunctionName="FenixModel.Store.prCdlItemsSetSent" />
+          <FunctionImportMapping FunctionImportName="prCdlKitsSetSent" FunctionName="FenixModel.Store.prCdlKitsSetSent" />
+          <EntitySetMapping Name="cdlItemTypes">
+            <EntityTypeMapping TypeName="FenixModel.cdlItemTypes">
+              <MappingFragment StoreEntitySet="cdlItemTypes">
+                <ScalarProperty Name="ModifyUserId" ColumnName="ModifyUserId" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+                <ScalarProperty Name="DescriptionEng" ColumnName="DescriptionEng" />
+                <ScalarProperty Name="DescriptionCz" ColumnName="DescriptionCz" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="prGetIntValueFromCounter" FunctionName="FenixModel.Store.prGetIntValueFromCounter" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

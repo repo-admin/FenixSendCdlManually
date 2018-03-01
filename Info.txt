@@ -1,0 +1,102 @@
+﻿
+		#region BAD
+//		private static readonly string xmlSource = @"<?xml version=""1.0"" encoding=""UTF-8""?>
+//                                                     <Items>
+//                                                        <Item>
+//                                                            <ItemID>370039</ItemID>
+//                                                            <ItemDescription>Manuál CA modul-harmonika</ItemDescription>
+//                                                            <SupplierID></SupplierID><SupplierName></SupplierName><SerialNumberManagement>0</SerialNumberManagement>
+//                                                            <ComponentManagement>0</ComponentManagement>
+//                                                            <QtyBox>1</QtyBox><QtyPallet>1</QtyPallet>
+//                                                        </Item>
+//                                                    </Items>";
+
+//		private static readonly string xmlSource = @"<?xml version=""1.0"" encoding=""UTF-8""?><Items><Item><ItemID>370040</ItemID><ItemDescription>Test item no: 370040</ItemDescription><SupplierID></SupplierID><SupplierName></SupplierName><SerialNumberManagement>0</SerialNumberManagement><ComponentManagement>0</ComponentManagement><QtyBox>1</QtyBox><QtyPallet>1</QtyPallet></Item></Items>";
+//		private static readonly string xmlSource = @"<ItemID>970039</ItemID><ItemDescription>Test item no: 970039</ItemDescription><SupplierID></SupplierID><SupplierName></SupplierName><SerialNumberManagement>0</SerialNumberManagement><ComponentManagement>0</ComponentManagement><QtyBox>1</QtyBox><QtyPallet>1</QtyPallet>";
+
+		
+//		private static readonly string xmlSource =
+//						@"<?xml version=""1.0"" encoding=""utf-8""?>
+//								<NewDataSet xmlns=""http://www.w3.org/2001/XMLSchema"">
+//									<ItemIntegration>
+//										<ID>5</ID>
+//										<MessageId>1</MessageId>
+//										<MessageType>Item</MessageType>
+//										<MessageDescription>ItemIntegration</MessageDescription>
+//										<MessageStatus>1</MessageStatus>
+//										<items>
+//											<item>
+//												<ItemID>870042</ItemID>
+//												<ItemDescription>Test Item 870042 - Řeřicha</ItemDescription>
+//												<SupplierID>UPC</SupplierID>
+//												<SupplierName>UPC</SupplierName>
+//												<ComponentManagement>0</ComponentManagement>                                                                                                                                                                                                  
+//												<QtyBox>10</QtyBox>
+//												<QtyPallet>20</QtyPallet>
+//											</item>
+//											<item>
+//												<ItemID>870043</ItemID>
+//												<ItemDescription>Test Item 870043 - Šťovík</ItemDescription>
+//												<SupplierID>UPC</SupplierID>
+//												<SupplierName>UPC</SupplierName>
+//												<ComponentManagement>0</ComponentManagement>                                                                                                                                                                                                  
+//												<QtyBox>10</QtyBox>
+//												<QtyPallet>20</QtyPallet>
+//											</item>
+//											<item>
+//												<ItemID>970041</ItemID>
+//												<ItemDescription>Test Item 970041 - Testovací se 2 komponentami</ItemDescription>
+//												<SupplierID>UPC</SupplierID>
+//												<SupplierName>UPC</SupplierName>
+//												<ComponentManagement>1</ComponentManagement>													
+//												<Components>
+//													<Component>
+//														<ComponentItemID>870042</ComponentItemID>
+//														<ComponentQty>1</ComponentQty>
+//													</Component>
+//													<Component>
+//														<ComponentItemID>870043</ComponentItemID>
+//														<ComponentQty>1</ComponentQty>
+//													</Component>
+//												</Components>
+//												<QtyBox>10</QtyBox>
+//												<QtyPallet>20</QtyPallet>
+//											</item>
+//										</items>
+//									</ItemIntegration>
+//								</NewDataSet>"
+//						;
+		
+		#endregion
+
+/*
+	which messageType may I use for ReceptionOrder (calling PortTypeNDL_InterfacesClient method UPWSI0) => ReceptionOrder
+	which messageType may I use for KittingOrder (calling PortTypeNDL_InterfacesClient method UPWSI0) => KittingOrder
+	which messageType may I use for ShipmentOrder (calling PortTypeNDL_InterfacesClient method UPWSI0) => ShipmentOrder
+ */
+
+
+
+ xmlSource
+<?xml version="1.0" encoding="utf-8"?>
+<NewDataSet xmlns="http://www.w3.org/2001/XMLSchema">
+  <ItemIntegration>
+    <ID>13</ID>
+    <MessageID>105</MessageID>
+    <MessageType>Item</MessageType>
+    <MessageDescription>ItemIntegration</MessageDescription>
+    <MessageStatus>1</MessageStatus>
+    <items>
+      <item>
+      <ItemID>1</ItemID>
+      <ItemDescription>GSF 101 /Blankom/</ItemDescription>
+      <SupplierID>UPC</SupplierID>
+      <SupplierName>UPC</SupplierName>
+      <ComponentManagement>0</ComponentManagement>
+      <QtyBox>1</QtyBox>
+      <QtyPallet>1</QtyPallet>
+      </item>
+    </items>
+  </ItemIntegration>
+</NewDataSet>
+
